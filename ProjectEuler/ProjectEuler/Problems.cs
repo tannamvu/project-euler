@@ -83,5 +83,62 @@ namespace ProjectEuler
                 }
             }
         }
+
+        /// <summary>
+        /// All natural numbers below the limit (default is 10) that are multiples of 5 and 3 
+        /// </summary>
+        /// <param name="limit"></param>
+        /// <returns></returns>
+        public static int MultiplesOfFiveAndThree(int limit = 10)
+        {
+            var total = 0;
+
+            for(var i = 1; i < limit; i++)
+            {
+                if (i % 3 == 0)
+                {
+                    total += i;
+                    continue;
+                }
+
+                if (i % 5 == 0)
+                {
+                    total += i;
+                }
+            }
+
+            return total;
+        }
+
+        public static long LargestPrimeFactor(long number = 600851475143)
+        {
+            var x = 2;
+
+            while (x * x < number)
+            {
+                if (number % x == 0)
+                {
+                    number /= x;
+                }else
+                {
+                    x++;
+                }
+            }
+
+            return number;
+        }
+
+        public static bool IsPrimeNumber(long number)
+        {
+            if (number == 1) return false;
+            if (number == 2) return true;
+
+            for (var i = 3; i < number; i++)
+            {
+                if (number % i == 0) return false;
+            }
+
+            return true;
+        }
     }
 }
