@@ -6,24 +6,9 @@ namespace ProjectEuler
     {
         static void Main(string[] args)
         {
-            var x = 1;
-            var y = 2;
-            var sum = 2;
+            var fibEvenSum = Problems.FibonacciEvenSumLimit(4000000);
 
-            while ((x + y) < 4000000)
-            {
-                var total = x + y;
-                Console.WriteLine(total);
-                x = y;
-                y = total;
-
-                if (total % 2 == 0)
-                {
-                    sum += total;
-                }
-            }
-
-            Console.WriteLine("Sum of even values is: " + sum);
+            Console.WriteLine("Sum of even values is: " + fibEvenSum);
             Console.ReadLine();
         }
     }
