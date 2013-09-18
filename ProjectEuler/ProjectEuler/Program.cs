@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
@@ -7,8 +8,9 @@ namespace ProjectEuler
         static void Main(string[] args)
         {
 
-            var total = Problems.LargestPrimeFactor();
-            Console.WriteLine(total);
+            var hightest = Problems.HighestPalindromeNumberFromThreeDigits();
+
+            Console.WriteLine("highest palindrome: " + hightest);
             Console.ReadLine();
         }
     }

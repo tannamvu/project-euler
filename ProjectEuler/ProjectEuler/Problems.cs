@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ProjectEuler
 {
@@ -139,6 +140,54 @@ namespace ProjectEuler
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Returns the highest valid paladrome number based on the product of 3 digit numbers. 
+        /// </summary>
+        /// <returns></returns>
+        public static int HighestPalindromeNumberFromThreeDigits()
+        {
+            var hightest = 0;
+
+            for (var i = 100; i < 1000; i++)
+            {
+                for (var x = 100; x < 1000; x++)
+                {
+                    var temp = x * i;
+
+                    if (IsPalindromeNumber(temp))
+                    {
+                        if (temp > hightest)
+                        {
+                            hightest = temp;
+                        }
+                    }
+                }
+            }
+
+            return hightest;
+        }
+
+        /// <summary>
+        /// Check if number is a valid palindrome number, ie 9009 (the same backwards). 
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
+        public static bool IsPalindromeNumber(int number)
+        {
+            var temp = number.ToString(CultureInfo.InvariantCulture);
+            var arrayStr = temp.ToCharArray();
+            Array.Reverse(arrayStr);
+            var reversed = new string(arrayStr);
+
+            //for (var i = temp.Length -1; i > -1; i--)
+            //{
+            //    reversed += temp[i];
+            //}
+
+            var reversedNumber = int.Parse(reversed);
+            return number == reversedNumber;
         }
     }
 }
