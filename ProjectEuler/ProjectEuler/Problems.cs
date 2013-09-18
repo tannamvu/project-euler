@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Globalization;
+using System.Text;
 
 namespace ProjectEuler
 {
     public static class Problems
     {
         /// <summary>
-        /// Fibonacci sequence whose values do not exceed the limit, returns sum of the even-valued terms
+        /// Fibonacci sequence whose values are even and do not exceed the limit. Returns sum of the even-valued terms
         /// </summary>
         /// <param name="limit">maximum fibonacci sequence</param>
         /// <returns>total of even numbers</returns>
-        public static int FibonacciEvenSumLimit(int limit)
+        public static int FibonacciEvenSumLimit(int limit = 4000000)
         {
             var x = 1;
             var y = 2;
             var sum = 2;
 
-            while ((x + y) < 4000000)
+            while ((x + y) < limit)
             {
                 var total = x + y;
                 x = y;
@@ -62,8 +63,10 @@ namespace ProjectEuler
         /// </summary>
         /// <param name="intArray"></param>
         /// <param name="limit">maximum duplicate to find.</param>
-        public static void FindDuplicatesInArray(int[] intArray, int limit = 30)
+        public static string FindDuplicatesInArray(int[] intArray, int limit = 30)
         {
+            var dups = string.Empty;
+
             for (var x = 0; x <= limit; x++)
             {
                 var counter = 0;
@@ -73,6 +76,9 @@ namespace ProjectEuler
                     if (x == intArray[i])
                     {
                         counter++;
+                    }else
+                    {
+                        counter = 0;
                     }
 
                     if (counter <= 1)
@@ -80,9 +86,12 @@ namespace ProjectEuler
                         continue;
                     }
                     Console.WriteLine(x);
+                    dups = dups + x + ",";
                     break;
                 }
             }
+
+            return dups.TrimEnd(',').ToString();
         }
 
         /// <summary>
@@ -180,12 +189,6 @@ namespace ProjectEuler
             var arrayStr = temp.ToCharArray();
             Array.Reverse(arrayStr);
             var reversed = new string(arrayStr);
-
-            //for (var i = temp.Length -1; i > -1; i--)
-            //{
-            //    reversed += temp[i];
-            //}
-
             var reversedNumber = int.Parse(reversed);
             return number == reversedNumber;
         }
